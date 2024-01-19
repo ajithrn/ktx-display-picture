@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Kerala Technology Expo (KTX), 2024 - Profile Picture Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.ico">
+  <link rel="stylesheet" href="assets/css/main.min.css">
+</head>
+
+<body>
+
+  <div class="header">
+    <img src="assets/images/KTX-log-with-date.svg" alt="KTX EXPO Logo">
+  </div>
+
+  <div class="container">
+    <div class="hero">
+      <h1>Create Your Custom Profile Picture</h1>
+      <p>Upload your photo, choose a frame, and download your new profile picture ready to share with the world!</p>
+      <!-- Place your app interface here -->
+    </div>
+    <div class="app">
+
+      <div class="section-wrapper">
+        <div class="section-heading">
+          <h3>Upload your picture</h3>
+        </div>
+        <div class="photo-upload">
+          <input type="file" id="uploadImage" class="btn btn-upload" accept="image/*" />
+        </div>
+      </div>
+
+      <div class="section-wrapper">
+        <div class="section-heading">
+          <h3>Click to chose your frame</h3>
+        </div>
+        <div id="framesContainer">
+          <!-- Dynamically add frames here -->
+        </div>
+      </div>
+
+      <div class="section-wrapper">
+        <div class="section-heading">
+          <h3>Download or Share your display picture</h3>
+        </div>
+        <div class="rendered-image">
+          <canvas id="resultCanvas" width="1000" height="1000" style="display: none;"></canvas>
+          <img id="previewImage" src="assets/images/placeholder.jpg" alt="Profile Picture Preview" />
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn btn-red" id="downloadBtn">Download</button>
+          <button class="btn btn-blue" id="shareBtn">Share</button>
+          <!-- Fallback Social Share Links -->
+          <div id="fallbackShare" class="fallback-share">
+            <p>Sorry! Your browser does not support Web Share API. Instead, You may download the photo.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Kerala Technology Expo (KTX), 2024 | India's Premier Technology & Innovation Confluence</p>
+    <p class="build">Made by <a href="https://ajithrn.com" title="visit the website">ajith_rn</a></p>
+    <p class="source"> <a href="https://github.com/ajithrn/ktx-display-picture/" target="_blank" title="View the source code">Source Code</a></p>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

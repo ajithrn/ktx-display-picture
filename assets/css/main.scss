@@ -1,0 +1,249 @@
+/**
+ * KTX Profile Picture Frame Generator
+ * Ver: 1.0
+ * Author: Ajith
+ * URL: https://ajithrn.com
+ * SASS
+ */
+
+// Define a mixin for media queries
+@mixin device-size($media) {
+  @if $media == phone {
+    @media (max-width: 419px) {
+      @content;
+    }
+  } @else if $media == mobile-landscape {
+    @media (min-width: 420px) {
+      @content;
+    }
+  } @else if $media == tablet-portrait {
+    @media (min-width: 600px) {
+      @content;
+    }
+  } @else if $media == tablet-landscape {
+    @media (min-width: 900px) {
+      @content;
+    }
+  } @else if $media == desktop {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+// box shadow generator
+@mixin box-shadow-generator($h-shadow, $v-shadow, $blur, $spread, $color, $inset: false) {
+  $shadow-inset: if($inset, 'inset', '');
+  box-shadow: $h-shadow $v-shadow $blur $spread $color $shadow-inset;
+}
+
+// button styles
+@mixin button-style($color, $background, $hover-color, $font-size, $padding, $border-radius) {
+  color: $color;
+  background-color: $background;
+  font-size: $font-size;
+  padding: $padding;
+  border-radius: $border-radius;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+// common styles
+
+body,
+html {
+  margin: 0;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f2f3f5;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+}
+.btn {
+  padding: 8px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 500;
+  border: 0;
+  border-radius: 4px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.btn-blue {
+  @include button-style(#ffffff, #087091, #06122a, 1rem, 0.6em 1.5em, 4px);
+}
+.btn-red {
+  @include button-style(#ffffff, #8d062d, #93371d, 1rem, 0.6em 1.5em, 4px);
+}
+
+.btn-upload {
+  @include button-style(#ffffff, #5daa94, #479a82, 0.8rem, 0.8em 1.6em, 4px);
+  @include device-size(mobile-landscape) {
+    font-size: 1rem;
+  }
+}
+
+.header {
+  background-color: #0a2540;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 15px;
+  @include device-size(tablet-portrait) {
+    padding: 50px 30px;
+  }
+}
+
+.section-wrapper {
+  background-color: #fafafa;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 30px;
+  @include box-shadow-generator(2px, 2px, 6px, -2, rgba(0, 0, 0, 0.3));
+  @include device-size(tablet-portrait) {
+    padding: 30px 20px;
+  }
+}
+
+.section-heading {
+  margin-bottom: 20px;
+  h3 {
+    color: #404040;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+.hero {
+  text-align: center;
+  margin-bottom: 50px;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    @include device-size(mobile-landscape) {
+      font-size: 2.3rem;
+    }
+    @include device-size(tablet-landscape) {
+      font-size: 3rem;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    @include device-size(tablet-portrait) {
+    font-size: 1.3rem;
+    }
+  }
+}
+
+.app {
+  text-align: center;
+}
+
+// frames display
+#framesContainer {
+
+  img {
+    max-width: 30vw;
+    margin: 10px;
+    @include device-size(mobile-landscape) {
+      max-width: 17vw;
+    }
+    @include device-size(desktop) {
+      max-width: 220px;
+    }
+  }
+}
+
+.rendered-image {
+  text-align: center;
+  margin-bottom: 30px;
+  img {
+    max-width: 100%;
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+
+.action-buttons {
+  text-align: center;
+  .fallback-share {
+    display: none; /* Initially hidden */
+    &.visible {
+      display: block; /* Show if Web Share is not supported */
+    }
+    p {
+      font-size: 0.8rem;
+      color: #479a82;
+    }    
+    a {
+      display: inline-flex;
+      align-items: center;
+      color: #333;
+      text-decoration: none;
+      margin-right: 10px;
+      i {
+        margin-right: 5px;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+      &.facebook {
+        color: #1877f2;
+      }
+      &.twitter {
+        color: #1da1f2;
+      }
+      &.linkedin {
+        color: #0077b5;
+      }
+      &.whatsapp {
+        color: #25d366;
+      }
+      &.email {
+        color: #ff9800;
+      }
+    }
+
+  }
+}
+
+.footer {
+  background-color: #0a2540;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  bottom: 0;
+  font-size: 13px;
+  .build {
+    display: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: lighten(#0a2540, 5%);
+    a {
+      color: lighten(#0a2540, 5%);
+      text-decoration: none;
+      &:hover {
+      color: lighten(#0a2540, 10%);
+      border-bottom: 1px dotted #ffffff;
+      }
+    }
+  }
+  .source {
+    @extend .build;
+    display: block;
+  }
+}
