@@ -128,7 +128,7 @@ const frameSource = [
   getAbsoluteImageUrl('assets/frames/meet.png'),
   getAbsoluteImageUrl('assets/frames/attendee.png'),
   getAbsoluteImageUrl('assets/frames/speaker.png'),
-  getAbsoluteImageUrl('assets/frames/sponsor.png'),
+  getAbsoluteImageUrl('assets/frames/exhibiting.png'),
 ];
 frameSource.forEach((src) => {
   const frameImg = new Image();
